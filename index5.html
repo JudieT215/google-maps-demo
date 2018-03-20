@@ -1,16 +1,18 @@
-<!-- add jQuery and a button -->
+<!-- add a marker -->
 
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <style>
-       #map {
-        height: 400px;
-        width: 90%;
-       }
+        #map {
+            height: 400px;
+            width: 90%;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <h3>Our Google Maps Demo</h3>
     <button id="random">Random!</button>
@@ -19,9 +21,7 @@
 
     <!-- jQuery -->
 
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
     <!-- google maps -->
@@ -30,33 +30,42 @@
         var rand_long = 0;
         var map;
 
-    $("#random").on("click", function() {
-        rand_lat = Math.floor(Math.random() * Math.floor(90));
-        rand_long = Math.floor(Math.random() * Math.floor(90));
-        console.log(`Random clicked! Pan to ${rand_lat}, ${rand_long}`);
-        map.panTo({ lat: rand_lat, lng: rand_long });
-    })
+        $("#random").on("click", function () {
+            // pick a random spot and pan to it
+            rand_lat = Math.floor(Math.random() * Math.floor(90));
+            rand_long = Math.floor(Math.random() * Math.floor(90));
+            console.log(`Random clicked! Pan to ${rand_lat}, ${rand_long}`);
+            map.panTo({ lat: rand_lat, lng: rand_long });
+
+            // create and place a marker 
+            var new_marker = new google.maps.Marker({
+                position: { lat: rand_lat, lng: rand_long },
+                label: `${rand_lat}, ${rand_long}`
+            });
+            new_marker.setMap(map);
+        })
 
 
 
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          label: "Hi!"
-        });
-      }
+        function initMap() {
+            var uluru = { lat: -25.363, lng: 131.044 };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                label: "Hi!"
+            });
+        }
     </script>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9LyCmC6m78DoWS-cRB3y4zem8GlLHfiA&callback=initMap">
+    <!-- this is my API key please don't use it in any real projects ty -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9LyCmC6m78DoWS-cRB3y4zem8GlLHfiA&callback=initMap">
+    
     </script>
 
-  </body>
+</body>
+
 </html>
-

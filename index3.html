@@ -2,15 +2,17 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <style>
-       #map {
-        height: 400px;
-        width: 90%;
-       }
+        #map {
+            height: 400px;
+            width: 90%;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <h3>Our Google Maps Demo</h3>
     <button id="random">Random!</button>
@@ -19,38 +21,36 @@
 
     <!-- jQuery -->
 
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
     <!-- google maps -->
     <script>
 
-    $("#random").on("click", function() {
-        alert("Well I got clicked!");
-    })
+        $("#random").on("click", function () {
+            alert("Well I got clicked!");
+        })
 
 
 
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          label: "Hi!"
-        });
-      }
+        function initMap() {
+            var uluru = { lat: -25.363, lng: 131.044 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                label: "Hi!"
+            });
+        }
+    </script>
+    
+    <!-- this is my API key please don't use it in any real projects ty -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9LyCmC6m78DoWS-cRB3y4zem8GlLHfiA&callback=initMap">
     </script>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9LyCmC6m78DoWS-cRB3y4zem8GlLHfiA&callback=initMap">
-    </script>
+</body>
 
-  </body>
 </html>
-
